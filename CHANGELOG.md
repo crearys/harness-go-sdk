@@ -1,120 +1,154 @@
 
-<a name="0.1.16"></a>
-## 0.1.16 (2022-03-17)
+<a name="0.2.6"></a>
+## 0.2.6 (2022-10-06)
+
+### Add
+
+* Add approvals for CG to SDK ([#142](https://github.com/harness/harness-go-sdk/issues/142))
 
 ### Added
 
-* added release2 pipeline
+* Added attribute filter model
+* Added method for fetching trigger webhookurl ([#129](https://github.com/harness/harness-go-sdk/issues/129))
+* Added resource lookups by name
+* Added artifact sources to service for graphql
 
-### Added
+### Adding
 
-* Added changelog setup
-* Added execution api's
-* Added delegate lookups by id and hostname
-* Added support for finding delegate by hostname
+* Adding dto files
 
-### Configurable
+### Catch
 
-* Configurable debug logging
+* Catch service not found issue
 
-### Create
+### Change
 
-* Create pipeline release3
+* change in package name
+* change model and enums for ssh key secret type
 
 ### Error
 
-* error handling
+* error handling after read file
 
 ### Fix
 
-* Fix secretRef issue related to https://harness.atlassian.net/browse/PL-22258
+* fix environment variable overrides with secrets
+* fix cac error handling
 
-### Fixed
+### Fix
 
-* Fixed tests
-* Fixed tooling dependencies
-* Fixed issue with tests
-* Fixed ng secret manager serializer
-* Fixed auth configuration issue
+* Fix approveOrRejectApprovals output ([#145](https://github.com/harness/harness-go-sdk/issues/145))
+* Fix serialization of secret entities ([#123](https://github.com/harness/harness-go-sdk/issues/123))
+* Fix serialization of service variable when encrypted text is used ([#114](https://github.com/harness/harness-go-sdk/issues/114))
 
-### Fixed
+### Fixing
 
-* fixed tests
-* fixed error message
-* fixed ng endpoint configuration
-* fixed ng models
-* fixed ci
+* fixing package name
 
-### Gitsync
+### Handle
 
-* Gitsync setup
+* Handle upsert error
 
-### Moved
+### Handling
 
-* Moved to harness organization
+* Handling different kinds of errors
 
-### Refactored
+### Implemented
 
-* Refactored client config and validation
-* Refactored logging and client configuration
+* Implemented AttachTag and DetachTag functionality ([#126](https://github.com/harness/harness-go-sdk/issues/126))
 
-### Refactored
+### Modify
 
-* refactored ng client
-* refactored client setup
+* Modify secret file post and put methods
 
-### Regen
+### Regenerated
 
-* Regen NG API's
+* regenerated NG API's ([#121](https://github.com/harness/harness-go-sdk/issues/121))
 
 ### Release
 
-* Release version 0.1.13 03-01-2022
-* Release v0.1.13
-* Release version 0.1.12 02-16-2022
-* Release v0.1.12
-* Release version 0.1.11 02-02-2022
-* Release v0.1.11
-* Release version 0.1.10 01-30-2022
-* Release v0.1.10
-* Release version 0.1.9 01-30-2022
-* Release v0.1.9
-* Release version 0.1.8 01-28-2022
-* Release v0.1.8
-* Release version 0.1.7 01-17-2022
-* Release v0.1.7
-* Release version 0.1.6 12-17-2021
+* Release version 0.2.5 10-05-2022
+* Release v0.2.5
+* Release version 0.2.4 10-03-2022
+* Release v0.2.4
+* Release version 0.2.3 09-29-2022
+* Release v0.2.3
+* Release version 0.2.2 09-23-2022
+* Release v0.2.2
+* Release version 0.2.1 09-21-2022
+* Release v0.2.1
+* Release version 0.2.0 09-15-2022
+* Release v0.2.0
+* Release version 0.1.35 09-14-2022
+* Release v0.1.35
+* Release version 0.1.34 09-13-2022
+* Release v0.1.34
+* Release version 0.1.33 08-13-2022
+* Release v0.1.33
+* Release version 0.1.32 07-20-2022
+* Release v0.1.32
+* Release v0.1.31
+* Release version 0.1.30 06-09-2022
+* Release v0.1.30
+* Release version 0.1.29 06-02-2022
+* Release v0.1.29
+* Release version 0.1.28 05-27-2022
+* Release v0.1.28
+* Release version 0.1.27 05-23-2022
+* Release v0.1.27
+* Release version 0.1.26 05-20-2022
+* Release v0.1.26
+* Release version 0.1.25 05-20-2022
+* Release v0.1.25
+* Release version 0.1.24 05-11-2022
+* Release v0.1.24
+* Release version 0.1.23 05-11-2022
+* Release v0.1.23
+* Release version 0.1.22 05-10-2022
+* Release v0.1.22
+* Release version 0.1.21 05-06-2022
+* Release v0.1.21
+* Release version 0.1.20 04-20-2022
 
-### Skip
+### Resource
 
-* Skip long running delegate tests
+* Resource selector model change
 
-### UPDATES
+### Restoring
 
-* UPDATES updated golang to 1.17
+* restoring the swagger.yaml
+
+### SSH
+
+* SSH key related models and enum changes
 
 ### Update
 
-* Update pipeline ci
-* Update pipeline ci
-* Update pipeline ci
-* Update pipeline ci
-* Update pipeline ci
+* Update role assignments api and models
+* Update prometheus connector dto model
+* Update user group model
+* Update user group model
 
 ### Updated
 
-* updated changelog
-* updated nextgen api's
+* updated dependencies
 
-### Updated
+### Pull Requests
 
-* Updated environmens
-* Updated tooling configuration
-* Updated dependencies
-* Updated deps
-* Updated dependencies
-
-### Upgraded
-
-* Upgraded containerd
+* Merge pull request [#170](https://github.com/harness/harness-go-sdk/issues/170) from harness/add-env-yaml
+* Merge pull request [#171](https://github.com/harness/harness-go-sdk/issues/171) from harness/PL-28661
+* Merge pull request [#166](https://github.com/harness/harness-go-sdk/issues/166) from harness/CDS-43546-Adding-cluster-API
+* Merge pull request [#165](https://github.com/harness/harness-go-sdk/issues/165) from harness/SPG-219-adding-service-API-files
+* Merge pull request [#163](https://github.com/harness/harness-go-sdk/issues/163) from harness/PL-28209
+* Merge pull request [#160](https://github.com/harness/harness-go-sdk/issues/160) from harness/PL-28209
+* Merge pull request [#155](https://github.com/harness/harness-go-sdk/issues/155) from harness/SPG-203-adding-cluster-api
+* Merge pull request [#156](https://github.com/harness/harness-go-sdk/issues/156) from harness/SPG-203-Adding-environment-group
+* Merge pull request [#152](https://github.com/harness/harness-go-sdk/issues/152) from harness/PL-27862-401-status-code
+* Merge pull request [#153](https://github.com/harness/harness-go-sdk/issues/153) from harness/fixUserGroup
+* Merge pull request [#148](https://github.com/harness/harness-go-sdk/issues/148) from harness/SPG-203-Adding-environment-group
+* Merge pull request [#146](https://github.com/harness/harness-go-sdk/issues/146) from harness/PL-27406
+* Merge pull request [#143](https://github.com/harness/harness-go-sdk/issues/143) from harness/PL-26314
+* Merge pull request [#140](https://github.com/harness/harness-go-sdk/issues/140) from harness/release
+* Merge pull request [#138](https://github.com/harness/harness-go-sdk/issues/138) from harness/PL-25840
+* Merge pull request [#139](https://github.com/harness/harness-go-sdk/issues/139) from harness/PL-25839
 

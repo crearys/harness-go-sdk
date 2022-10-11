@@ -28,25 +28,6 @@ type ServiceConnection struct {
 	PageInfo PageInfo
 }
 
-type Service struct{}
-
-type ArtifactSource struct {
-	CommonMetadata
-	Artifacts ArtifactConnection
-}
-
-type ArtifactConnection struct {
-	Nodes    []Artifact
-	PageInfo PageInfo
-}
-
-type Artifact struct {
-	ArtifactSource ArtifactSource
-	BuildNo        string
-	CollectedAt    time.Time
-	Id             string
-}
-
 type PipelineConnection struct {
 	Nodes    []Pipeline
 	PageInfo PageInfo
@@ -87,13 +68,6 @@ type Environment struct {
 type InfrastructureDefinitionConnection struct {
 	Nodes    []InfrastructureDefinition
 	PageInfo PageInfo
-}
-
-type PageInfo struct {
-	HasMore bool
-	Limit   int
-	Offset  int
-	Total   int
 }
 
 type InfrastructureDefinition struct {
@@ -318,6 +292,7 @@ type Application struct {
 	Pipelines                 *PipelineConnection      `json:"pipelines,omitempty"`
 	Services                  *ServiceConnection       `json:"services,omitempty"`
 	Workflows                 *WorkflowConnection      `json:"workflows,omitempty"`
+	Tags                      []*Tag                   `json:"tags,omitempty"`
 }
 
 type Applications struct {
@@ -871,4 +846,31 @@ type CEClusterHealth struct {
 	Errors             []string `json:"errors,omitempty"`
 	LastEventTimestamp float64  `json:"lastEventTimestamp,omitempty"`
 	Messages           []string `json:"messages"`
+}
+
+type ApprovalVariable struct {
+	Name  string `json:"name,omitempty"`
+	Value string `json:"value,omitempty"`
+}
+
+type ApprovalDetailsPayload struct {
+	ApprovalDetails []*Approval `json:"approvalDetails,omitempty"`
+}
+
+type Approval struct {
+	ApprovalId   string              `json:"approvalId,omitempty"`
+	ApprovalType ApprovalStepType    `json:"approvalType,omitempty"`
+	StepName     string              `json:"stepName,omitempty"`
+	StageName    string              `json:"stageName,omitempty"`
+	StartedAt    *time.Time          `json:"startedAt,omitempty"`
+	TriggeredBy  User                `json:"triggeredBy,omitempty"`
+	WillExpireAt *time.Time          `json:"willExpireAt,omitempty"`
+	Approvers    []string            `json:"approvers,omitempty"`
+	ExecutionId  string              `json:"executionId,omitempty"`
+	Variables    []*ApprovalVariable `json:"variables,omitempty"`
+}
+
+type ApproveOrRejectApprovals struct {
+	ClientMutationId string `json:"clientMutationId,omitempty"`
+	Success          bool   `json:"success,omitempty"`
 }

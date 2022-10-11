@@ -56,7 +56,7 @@ func TestCreateApplication(t *testing.T) {
 	// Create application
 	client := getClient()
 	name := fmt.Sprintf("%s-%s", t.Name(), utils.RandStringBytes(5))
-	input := &graphql.Application{
+	input := &graphql.CreateApplicationInput{
 		ClientMutationId: time.Now().String(),
 		Name:             name,
 		Description:      "Test application description",
@@ -99,7 +99,7 @@ func TestUpdateApplication(t *testing.T) {
 
 	// Setup
 	name := fmt.Sprintf("%s-%s", t.Name(), utils.RandStringBytes(5))
-	expectedName := "test_name_change"
+	expectedName := fmt.Sprintf("%s_test_name_change", name)
 
 	// Create a new app
 	newApp, err := createApplication(name)
@@ -127,7 +127,7 @@ func TestUpdateApplication(t *testing.T) {
 // Helper function for creating application
 func createApplication(name string) (*graphql.Application, error) {
 	client := getClient()
-	input := &graphql.Application{
+	input := &graphql.CreateApplicationInput{
 		ClientMutationId: time.Now().String(),
 		Name:             name,
 		Description:      "Test application description",

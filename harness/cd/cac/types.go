@@ -38,8 +38,8 @@ type Tag struct {
 }
 
 type Response struct {
-	Metadata         ResponseMetadata  `json:"metaData"`
-	Resource         ConfigAsCodeItem  `json:"resource"`
+	Metadata         *ResponseMetadata `json:"metaData"`
+	Resource         *ConfigAsCodeItem `json:"resource"`
 	ResponseMessages []ResponseMessage `json:"responseMessages"`
 }
 
@@ -59,7 +59,8 @@ type ConfigAsCodeItem struct {
 	YamlVersionType string              `json:"yamlVersionType,omitempty"`
 	YamlFilePath    string              `json:"yamlFilePath,omitempty"`
 	Status          string              `json:"status,omitempty"`
-	ErrorMessage    string              `json:"errorMssg,omitempty"`
+	ErrorMessage    string              `json:"errorMessage,omitempty"`
+	ErrorMssg       string              `json:"errorMssg,omitempty"`
 	Yaml            string              `json:"yaml"`
 	EntityId        string              `json:"entityId,omitempty"`
 }
@@ -74,35 +75,6 @@ type ResponseMessage struct {
 	Code    string `json:"code"`
 	Level   string `json:"level"`
 	Message string `json:"message"`
-}
-
-type Service struct {
-	HarnessApiVersion         HarnessApiVersion  `yaml:"harnessApiVersion" json:"harnessApiVersion"`
-	Type                      ObjectType         `yaml:"type" json:"type"`
-	Id                        string             `yaml:"-"`
-	Name                      string             `yaml:"-"`
-	ArtifactType              ArtifactType       `yaml:"artifactType,omitempty"`
-	DeploymentType            DeploymentType     `yaml:"deploymentType,omitempty"`
-	Description               string             `yaml:"description,omitempty"`
-	Tags                      map[string]string  `yaml:"tags,omitempty"`
-	HelmVersion               HelmVersion        `yaml:"helmVersion,omitempty"`
-	ApplicationId             string             `yaml:"-"`
-	DeploymentTypeTemplateUri string             `yaml:"deploymentTypeTemplateUri,omitempty"`
-	ConfigVariables           []*ServiceVariable `yaml:"configVariables,omitempty"`
-}
-
-func (a *Service) IsEmpty() bool {
-	return reflect.DeepEqual(a, &Service{})
-}
-
-func (s *Service) Validate() (bool, error) {
-	return utils.RequiredStringFieldsSet(s, []string{"ApplicationId"})
-}
-
-type ServiceVariable struct {
-	Name      string            `yaml:"name,omitempty"`
-	Value     string            `yaml:"value,omitempty"`
-	ValueType VariableValueType `yaml:"valueType,omitempty"`
 }
 
 type AwsCloudProvider struct {
@@ -272,11 +244,11 @@ type EnvFilter struct {
 	EntityNames []string                `yaml:"entityNames,omitempty"`
 }
 
-type SecretRef struct {
-	Name string
-}
-
 type YamlPath string
+
+func (y YamlPath) String() string {
+	return string(y)
+}
 
 type Environment struct {
 	HarnessApiVersion                  HarnessApiVersion       `yaml:"harnessApiVersion" json:"harnessApiVersion"`
@@ -296,13 +268,6 @@ func (a *Environment) IsEmpty() bool {
 
 func (e *Environment) Validate() (bool, error) {
 	return utils.RequiredStringFieldsSet(e, []string{"Name", "EnvironmentType", "ApplicationId"})
-}
-
-type VariableOverride struct {
-	Name        string            `yaml:"name,omitempty"`
-	ServiceName string            `yaml:"serviceName,omitempty"`
-	Value       string            `yaml:"value,omitempty"`
-	ValueType   VariableValueType `yaml:"valueType,omitempty"`
 }
 
 type InfrastructureDefinition struct {

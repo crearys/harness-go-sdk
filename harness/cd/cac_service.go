@@ -26,6 +26,10 @@ func (c *ConfigAsCodeClient) UpsertService(input *cac.Service) (*cac.Service, er
 		return nil, err
 	}
 
+	if app == nil {
+		return nil, fmt.Errorf("could not find application by id: '%s'", input.ApplicationId)
+	}
+
 	if ok, err := input.Validate(); !ok {
 		return nil, err
 	}
@@ -35,6 +39,10 @@ func (c *ConfigAsCodeClient) UpsertService(input *cac.Service) (*cac.Service, er
 	err = c.UpsertObject(input, yamlPath, svc)
 	if err != nil {
 		return nil, err
+	}
+
+	if svc.IsEmpty() {
+		return nil, fmt.Errorf("could not upsert service: %s. This is usually an indicator that their is a bug in the Harness API.", input.Name)
 	}
 
 	return svc, nil

@@ -1,5 +1,5 @@
 /*
- * CD NextGen API Reference
+ * Harness NextGen Software Delivery Platform API Reference
  *
  * This is the Open Api Spec 3 for the NextGen Manager. This is under active development. Beware of the breaking change with respect to the generated code stub  # Authentication  <!-- ReDoc-Inject: <security-definitions> -->
  *
@@ -20,6 +20,7 @@ type UserGroup struct {
 	NotificationConfigs  []NotificationSettingConfigDto `json:"notificationConfigs,omitempty"`
 	IsSsoLinked          bool                           `json:"isSsoLinked,omitempty"`
 	LinkedSsoId          string                         `json:"linkedSsoId,omitempty"`
+	LinkedSsoType        string                         `json:"linkedSsoType,omitempty"`
 	LinkedSsoDisplayName string                         `json:"linkedSsoDisplayName,omitempty"`
 	SsoGroupId           string                         `json:"ssoGroupId,omitempty"`
 	SsoGroupName         string                         `json:"ssoGroupName,omitempty"`
